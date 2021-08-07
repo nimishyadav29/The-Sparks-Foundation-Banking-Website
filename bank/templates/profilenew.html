@@ -1,0 +1,111 @@
+{% extends 'basic.html' %}
+
+{% block title %} PROFILE{% endblock title %}
+
+
+{% block body %}
+{% for message in messages  %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message : </strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+ {% endfor %}
+
+<div class="container">
+    <div class="row ">
+
+<div class="col-12">
+{% for i in prof %}
+<div class="card mt-4" >
+  <div class="card-body">
+    <h1 class="card-title">Personal Profile</h1>
+      <p class="card-text"><b>Name:</b> {{i.name}}</p>
+      <p class="card-text"><b>Email ID</b>: {{i.email}}</p>
+      <p class="card-text"><b>ACC NO:</b> {{i.accno}}</p>
+      <p class="card-text"><b>ACC Balance: </b>{{i.accbal}}</p>
+      <p class="card-text"><b>Address:</b> {{i.address}}</p>
+      <p class="card-text"><b>City:</b> {{i.city}}</p>
+      <p class="card-text"><b>State:</b> {{i.state}}</p>
+  </div>
+</div>
+
+
+{% endfor %}
+</div>
+</div>
+    <div class="row justify-content-center">
+<div class="col-md-6 col-sm-12">
+{% for j in prof %}
+<div class="card mt-4">
+<div class="card-body">
+<h1 class="card-title">Transfer Money</h1>
+<form action="/profilenew/{{j.id}}" method="post">
+  {% csrf_token %}
+
+<div class="card-text">
+  <div class="form-group">
+    <input type="hidden" class="form-control" id="sender" name="sender" value="{{j.name}}"aria-describedby="emailHelp">
+
+  </div>
+</div>
+    <div class="card-text">
+  <div class="form-group">
+
+    <input type="hidden" class="form-control" id="senderaccno" name="senderaccno" value="{{j.accno}}"aria-describedby="emailHelp">
+
+  </div>
+    </div>
+
+<div class="card-text">
+
+   <div class="form-group">
+    <label for="receiver">RECEIVER NAME:</label>
+    <select class="form-control" id="receiver" name="receiver" required>
+      <option value="" selected>Please select</option>
+      <option value="Rohan">Rohan</option>
+      <option value="Nikhil">Nikhil</option>
+      <option value="Alok">Alok</option>
+      <option value="Shristi">Shristi</option>
+      <option value="Priyanka">Priyanka</option>
+      <option value="Dustin">Dustin</option>
+      <option value="Chloe">Chloe</option>
+      <option value="Shyam">Shyam</option>
+      <option value="Puja">Puja</option>
+      <option value="Rehan">Rehan</option>
+    </select>
+  </div>
+</div>
+
+    <div class="card-text">
+  <div class="form-group">
+  <label for="receiveraccno">RECEIVER ACCOUNT NO:</label>
+    <input type="number" class="form-control " id="receiveraccno"  name="receiveraccno" aria-describedby="emailHelp" required>
+
+  </div>
+    </div>
+
+    <div class="card-text">
+
+  <div class="form-group">
+<label for="amount">AMOUNT:</label>
+    <input type="number" name="amount" class="form-control" id="amount" aria-describedby="emailHelp" required>
+
+  </div>
+
+    </div>
+<div class="card-text">
+  <button type="submit" class="btn btn-primary">Send</button>
+</div>
+</form>
+</div>
+
+</div>
+{% endfor %}
+</div>
+    </div>
+</div>
+
+
+{% endblock %}

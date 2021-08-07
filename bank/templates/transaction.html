@@ -1,0 +1,45 @@
+{% extends 'basic.html' %}
+
+{% block title %} Transaction History{% endblock title %}
+{% block body %}
+<br>
+<h1 style="text-align:center">Transaction History</h1><br>
+<div class="container">
+<div class="table-responsive">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">SNO</th>
+      <th scope="col"> TRANSACTION TIME</th>
+      <th scope="col"> Sender Name</th>
+      <th scope="col">Sender ACC NO</th>
+       <th scope="col">Receiver Name</th>
+      <th scope="col">Receiver ACC NO</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for i in tran %}
+    <tr>
+      <th scope="row">{{i.id}}</th>
+      <td>{{i.timestamp}}</td>
+      <td>{{i.sender}}</td>
+      <td>{{i.senderaccno}}</td>
+      <td>{{i.receiver}}</td>
+      <td>{{i.receiveraccno}}</td>
+      <td>{{i.amount}}</td>
+
+
+
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+</div>
+
+
+ {% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'basic.html' %}
+
+{% block title %} Customers{% endblock title %}
+{% block body %}
+<br>
+<h1 style="text-align:center">ALL CUSTOMERS</h1><br>
+<div class="container">
+<div class="table-responsive">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">SNO</th>
+      <th scope="col">NAME</th>
+      <th scope="col">EMAIL ID</th>
+       <th scope="col">ACC NO</th>
+      <th scope="col">ACCOUNT BALANCE</th>
+      <th scope="col">LINKS</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for i in custinfo %}
+    <tr>
+      <th scope="row">{{i.id}}</th>
+      <td>{{i.name}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.accno}}</td>
+      <td>{{i.accbal}}</td>
+      <td> <a href="profilenew/{{i.id}}">More Info/Tranfer Money</a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+</div>
+
+
+ {% endblock %}
